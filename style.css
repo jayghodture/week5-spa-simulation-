@@ -1,0 +1,377 @@
+/* Spoke & Chain Co-op - styles for the SPA */
+
+:root {
+  --navy: #12355b;
+  --yellow: #ffc20e;
+  --light: #e3ebf3;
+  --text: #14202b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: #f7f9fb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: #0b4f9e;
+}
+
+/* focus outline for keyboard users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #0b4f9e;
+  outline-offset: 3px;
+}
+
+h1:focus,
+main:focus {
+  outline: none;
+}
+
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 10px;
+  background: var(--yellow);
+  color: var(--text);
+  padding: 10px 15px;
+  font-weight: bold;
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
+/* ---------- header and menu ---------- */
+header {
+  background: var(--navy);
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem 2rem;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+nav a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 3px solid transparent;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* the page you are on */
+nav a[aria-current="page"] {
+  border-bottom-color: var(--yellow);
+  font-weight: bold;
+}
+
+header a:focus-visible {
+  outline-color: var(--yellow);
+}
+
+/* ---------- main area and page transition ---------- */
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+/* JS adds this class so the old page fades out */
+main.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+h1 {
+  margin-top: 0;
+  color: var(--navy);
+}
+
+/* ---------- hero ---------- */
+.hero {
+  background: var(--navy);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  border-radius: 8px;
+}
+
+.hero h1 {
+  color: #fff;
+}
+
+.hero img {
+  max-width: 450px;
+  margin: 1.5rem auto 0;
+}
+
+/* ---------- buttons ---------- */
+.button,
+button {
+  display: inline-block;
+  background: var(--yellow);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid var(--yellow);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.button:hover,
+button:hover {
+  background: #e0a800;
+  border-color: #e0a800;
+}
+
+/* ---------- cards ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.card {
+  background: #fff;
+  border-left: 6px solid var(--yellow);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: var(--navy);
+}
+
+.tag {
+  display: inline-block;
+  background: var(--light);
+  color: var(--navy);
+  font-weight: bold;
+  font-size: 0.9rem;
+  padding: 0 0.6rem;
+  border-radius: 1em;
+  text-transform: capitalize;
+}
+
+.full {
+  color: #8a1c1c;
+  font-weight: bold;
+}
+
+/* ---------- filter buttons ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-btn {
+  background: #fff;
+  color: var(--navy);
+  border-color: var(--navy);
+  text-transform: capitalize;
+}
+
+.filter-btn:hover {
+  background: var(--light);
+  border-color: var(--navy);
+}
+
+.filter-btn[aria-pressed="true"] {
+  background: var(--navy);
+  color: #fff;
+}
+
+/* ---------- table ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+caption {
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #999;
+}
+
+thead th {
+  background: var(--navy);
+  color: #fff;
+}
+
+/* ---------- form ---------- */
+form {
+  max-width: 480px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 2px solid #4a6178;
+  border-radius: 4px;
+}
+
+.error {
+  color: #a11d1d;
+  font-weight: bold;
+  margin: 0.25rem 0 0;
+  min-height: 1.2em;
+}
+
+form button {
+  margin-top: 1.25rem;
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #fff;
+}
+
+form button:hover {
+  background: #0b2440;
+}
+
+/* ---------- bookings ---------- */
+.booking-list {
+  list-style: none;
+  padding: 0;
+}
+
+.booking {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: #fff;
+  border-left: 6px solid var(--navy);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.cancel-btn {
+  background: #fff;
+  color: #a11d1d;
+  border-color: #a11d1d;
+}
+
+.cancel-btn:hover {
+  background: #a11d1d;
+  color: #fff;
+}
+
+.success {
+  background: #e3f4e6;
+  border-left: 6px solid #1e7a34;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+}
+
+.error-box {
+  background: #fbe6e6;
+  border-left: 6px solid #a11d1d;
+  padding: 0.75rem 1rem;
+}
+
+/* ---------- footer ---------- */
+footer {
+  background: var(--navy);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer p {
+  margin: 0.25rem 0;
+}
+
+footer a {
+  color: #fff;
+}
+
+/* ---------- small screens ---------- */
+@media (max-width: 600px) {
+  .booking {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* less motion if the user asks for it */
+@media (prefers-reduced-motion: reduce) {
+  main,
+  .card,
+  button,
+  .button {
+    transition: none;
+  }
+}
